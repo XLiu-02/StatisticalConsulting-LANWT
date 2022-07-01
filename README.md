@@ -1,1 +1,1 @@
-# Statistical-Consulting-LANWT
+# StatisticalConsulting-LANWT
