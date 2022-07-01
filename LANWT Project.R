@@ -70,7 +70,7 @@ call.log4 <- subset(call.log3, call.log3$CALL.TYPE!="3rd party conference" & cal
 ## Remove Duplicated Callback Request
 call.log5 <- subset(call.log4, call.log4$DISPOSITION != "Duplicated Callback Request")
   
-length(unique(call.log5$DATE))  # 42 business days
+length(unique(call.log5$DATE))  
 
 #### feature engineering ####
 # New Variable: if talk time is 0 or not 
@@ -97,7 +97,7 @@ call.log.callback2 <- call.log.callback %>%
 # percent of callbacks result in a conversation with an attorney
 table(call.log.callback2$IF.TALK10)
 percent.callbacks <- sum(table(call.log.callback2$IF.TALK10)[2])/nrow(call.log.callback2)
-percent.callbacks    # 34%
+percent.callbacks    
 
 summary(call.log.callback2$TALK.TIME)
 
@@ -119,7 +119,7 @@ mean.unanswered # 226 unanswered calls on average per day
 # PERCENTAGE OF CALLS ARE UNANSWERED ON AVERAGE PER DAY
 perc.unanswer <- mean(subset(table.q2, IF.ANSWERED== 0)$PERCENT)
 
-perc.unanswer # 67% unanswered calls on average per day
+perc.unanswer 
 
 ########## Question 3 ############
 # no matter if it is a callback or taken by someone directly from the queue.
@@ -137,7 +137,7 @@ mean.complete #157 calls were completed on average per day
 # PERCENTAGE OF CALLS ON AVERAGE ARE COMPLETED PER DAY
 perc.complete <- mean(subset(table.q3, IF.COMPLETE==1)$PERCENT)
 
-perc.complete #27% calls were completed on average per day
+perc.complete 
 
 
 ############ Question 4 (a) #############
@@ -150,7 +150,8 @@ call.log.hold2 <- call.log.hold %>%
   filter(AGENT.NAME!="" & AGENT.NAME!="Christina Talton" & AGENT.NAME!="Anthony Holley" & AGENT.NAME!="Jessica Castro")
 
 
-summary(call.log.hold2$QUEUE.WAIT.TIME)  # mean wait time is 6.68
+summary(call.log.hold2$QUEUE.WAIT.TIME)  
+
 
 ######### Question 4 (b) #########
 # choose callback                       
@@ -166,5 +167,5 @@ call.log.callback3 <- call.log.callback2 %>%
 # check those qualified 2173 in call.log.cb to see the queue callback wait time
 call.log.cb2 <- subset(call.log.cb, call.log.cb$CALL.ID %in% call.log.callback3$CALL.ID)
 
-summary(call.log.cb2$QUEUE.CALLBACK.WAIT.TIME)  # 1703.80 mins
+summary(call.log.cb2$QUEUE.CALLBACK.WAIT.TIME) 
 
